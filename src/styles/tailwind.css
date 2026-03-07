@@ -1,0 +1,23 @@
+@import 'tailwindcss' source(none);
+@source '../**/*.{js,ts,jsx,tsx}';
+
+@import 'tw-animate-css';
+
+/* Custom Font Family Utilities */
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+  }
+  
+  .font-accent {
+    font-family: var(--font-accent);
+  }
+}
