@@ -5,13 +5,14 @@ interface Stat {
   value: string;
   label: string;
   target: number;
+  compact?: boolean;
 }
 
 const stats: Stat[] = [
-  { value: '30+', label: 'Anos de tradição', target: 30 },
-  { value: '1000+', label: 'Alunos formados', target: 1000 },
-  { value: '100+', label: 'Eventos jurídicos', target: 100 },
-  { value: '5⭐', label: 'Avaliação institucional', target: 5 },
+  { value: 'OAB', label: 'OAB Recomenda', target: 0 },
+  { value: '5', label: 'Anos de curso', target: 5 },
+  { value: 'Prática', label: 'Desde o início', target: 0, compact: true },
+  { value: 'Global', label: 'Debates internacionais', target: 0, compact: true },
 ];
 
 function AnimatedCounter({ target, suffix = '+' }: { target: number; suffix?: string }) {
@@ -48,7 +49,7 @@ export function StatsSection() {
   const [inView, setInView] = useState(false);
 
   return (
-    <section className="relative py-20 md:py-32 px-4 overflow-hidden bg-neutral-950 border-y border-white/5">
+    <section id="numeros" className="relative py-20 md:py-32 px-4 overflow-hidden bg-neutral-950 border-y border-white/5">
       {/* Radial gradient pulse */}
       <motion.div
         className="absolute inset-0"
@@ -191,11 +192,11 @@ export function StatsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="mb-10 text-center md:mb-16"
         >
           <div className="inline-flex items-center gap-3 mb-4">
             <span className="text-2xl">♔</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-display">
+            <h2 className="text-2xl font-bold text-white font-display sm:text-3xl md:text-4xl">
               Números que <span className="text-red-600">impressionam</span>
             </h2>
           </div>
@@ -207,7 +208,7 @@ export function StatsSection() {
           viewport={{ once: true }}
           onViewportEnter={() => setInView(true)}
           transition={{ duration: 0.8 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12"
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 md:gap-8"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -216,20 +217,23 @@ export function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative group text-center"
+              className="relative group text-center rounded-2xl border border-white/5 bg-white/[0.02] px-4 py-6"
             >
-              {/* Subtle background on hover */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                className="absolute inset-0 bg-white/[0.02] rounded-xl -m-4"
-              />
-
               {/* Stat Value */}
-              <div className="relative text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-br from-white to-neutral-400 bg-clip-text text-transparent mb-3 font-display">
+              <div
+                className={`relative mb-3 bg-gradient-to-br from-white to-neutral-400 bg-clip-text font-display font-bold text-transparent ${
+                  stat.compact
+                    ? 'text-3xl leading-[1.02] sm:text-4xl lg:text-[3.2rem]'
+                    : 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl'
+                }`}
+              >
                 {inView && stat.value.includes('+') ? (
                   <>
                     <AnimatedCounter target={stat.target} suffix="+" />
+                  </>
+                ) : inView && stat.target === 5 ? (
+                  <>
+                    <AnimatedCounter target={stat.target} suffix="" />
                   </>
                 ) : (
                   stat.value
@@ -237,7 +241,7 @@ export function StatsSection() {
               </div>
 
               {/* Stat Label */}
-              <div className="relative text-sm md:text-base text-neutral-400 font-medium font-body">
+              <div className="relative font-body text-sm font-medium text-neutral-400 md:text-base">
                 {stat.label}
               </div>
 
@@ -247,7 +251,7 @@ export function StatsSection() {
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 + 0.3 }}
-                className="h-px bg-gradient-to-r from-transparent via-red-600 to-transparent mt-4 mx-auto w-3/4"
+                className="mt-4 mx-auto h-px w-3/4 bg-gradient-to-r from-transparent via-red-600 to-transparent"
               />
             </motion.div>
           ))}

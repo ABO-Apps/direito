@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
-import { Play, BookOpen, Send } from 'lucide-react';
+import { Send } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export function HeroSection() {
@@ -52,12 +52,12 @@ export function HeroSection() {
       ]
         .filter(Boolean)
         .join(', ');
-      setSubmitError(`Configuracao ausente: ${missingVars}.`);
+      setSubmitError(`Configuração ausente: ${missingVars}.`);
       return;
     }
 
     if (token.startsWith('$2') && !/^\$2[aby]\$\d{2}\$/.test(token)) {
-      setSubmitError('Token invalido no .env. Escape "$" como "\\$" e reinicie o vite.');
+      setSubmitError('Token inválido no .env. Escape "$" como "\\$" e reinicie o Vite.');
       return;
     }
 
@@ -88,7 +88,7 @@ export function HeroSection() {
 
       setFormData({ nome: '', telefone: '', email: '', estado: '', cidade: '' });
     } catch (error) {
-      const message = error instanceof Error ? error.message : 'Falha ao enviar formulario.';
+      const message = error instanceof Error ? error.message : 'Falha ao enviar formulário.';
       setSubmitError(message);
     } finally {
       setIsSubmitting(false);
@@ -103,7 +103,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center px-4 lg:px-8 py-24 overflow-hidden bg-neutral-950">
+    <section id="inicio" className="relative min-h-screen flex items-center px-4 lg:px-8 py-24 overflow-hidden bg-neutral-950">
       {/* Animated gradient background - fog effect */}
       <motion.div
         className="absolute inset-0 opacity-40"
@@ -150,7 +150,7 @@ export function HeroSection() {
         />
       </div>
 
-      {/* Sophisticated chessboard pattern */}
+      {/* Chessboard pattern */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:80px_80px]"></div>
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_2px,transparent_2px),linear-gradient(to_bottom,#ffffff02_2px,transparent_2px)] bg-[size:160px_160px]"></div>
@@ -194,7 +194,7 @@ export function HeroSection() {
         />
       ))}
 
-      {/* Strategic Queen following mouse */}
+      {/* Queen following mouse */}
       <motion.div
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none z-0"
         style={{
@@ -213,7 +213,7 @@ export function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* Floating strategic pieces with parallax effect */}
+      {/* Floating pieces with parallax effect */}
       <motion.div
         className="absolute top-20 right-16 text-7xl opacity-[0.1] text-red-600"
         animate={{
@@ -287,86 +287,63 @@ export function HeroSection() {
         ♟
       </motion.div>
 
-      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
-        {/* Content - Strategic & Powerful */}
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      {/* Content */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8 text-center lg:text-left w-full"
+          className="w-full space-y-6 text-center lg:space-y-8 lg:text-left"
         >
-          <div className="space-y-5">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="inline-block px-4 py-1.5 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm"
-            >
-              <p className="text-sm font-medium text-neutral-400">AMF Faculdade de Direito</p>
-            </motion.div>
-
+          <div className="space-y-6">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] font-display"
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
             >
-              <span className="text-white">Cada jogada</span>
+              <span className="text-white">Bem-vindo</span>
               <br />
-              <span className="text-white">conta no</span>
-              <br />
-              <span className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 bg-clip-text text-transparent">Direito</span>
+              <span className="bg-gradient-to-r from-red-600 via-red-500 to-red-600 bg-clip-text text-transparent">
+                ao Xeque-Mate
+              </span>
             </motion.h1>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="flex items-center gap-3 justify-center lg:justify-start"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex items-center justify-center gap-3 lg:justify-start"
             >
-              <div className="h-px w-12 bg-gradient-to-r from-transparent to-red-600"></div>
-              <p className="text-lg md:text-xl text-neutral-300 font-light tracking-wide font-heading">Pensar. Argumentar. Decidir.</p>
+              <div className="h-px w-8 bg-gradient-to-r from-transparent to-red-600 sm:w-12"></div>
+              <p className="font-heading text-base font-light tracking-wide text-neutral-200 sm:text-lg md:text-xl">
+                O lugar onde o Direito sai da teoria e entra no jogo.
+              </p>
             </motion.div>
           </div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base md:text-lg text-neutral-400 leading-relaxed max-w-xl mx-auto lg:mx-0 font-body"
-          >
-            No Direito, como no xadrez, a estratégia define o resultado. Forme-se com quem entende que cada movimento jurídico é decisivo.
-          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mx-auto max-w-xl space-y-3 font-body text-sm leading-relaxed text-neutral-300 sm:text-base md:text-lg lg:mx-0"
           >
-            <button className="group relative px-7 py-4 bg-red-600 text-white font-semibold rounded-lg overflow-hidden transition-all hover:bg-red-700">
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                <BookOpen className="size-5" />
-                Conhecer o curso
-              </span>
-            </button>
-
-            <button className="group px-7 py-4 bg-transparent text-white font-semibold rounded-lg border border-white/20 transition-all hover:bg-white/5 hover:border-white/30">
-              <span className="flex items-center justify-center gap-2">
-                <Play className="size-5" />
-                Ver conteúdos
-              </span>
-            </button>
+            <p>
+              Aqui, cada conversa é uma jogada estratégica: exploramos cases, carreira e discussões que mostram o Direito no dia a dia.
+            </p>
+            <p>
+              Mais do que decorar leis, entender o Direito é saber jogar o jogo.
+            </p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             className="inline-block"
           >
             <p className="text-sm text-neutral-500 italic border-l-2 border-red-600/50 pl-4 font-accent">
-              "No jogo do Direito, quem pensa estrategicamente vence."
+              "No jogo do Direito, estratégia também é leitura de cenário."
             </p>
           </motion.div>
         </motion.div>
@@ -376,20 +353,20 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative w-full max-w-lg mx-auto"
+          className="relative mx-auto w-full max-w-lg"
         >
           <div className="absolute -top-px left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-red-600 to-transparent"></div>
 
-          <div className="bg-neutral-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8">
+          <div className="bg-stone-950/80 backdrop-blur-md border border-stone-700/60 rounded-[28px] p-6 md:p-8 shadow-[0_30px_90px_rgba(0,0,0,0.45)]">
             <div className="flex items-center gap-3 mb-6">
-              <div className="text-2xl">♔</div>
-              <h3 className="text-xl font-bold text-white">Faça sua jogada</h3>
+              <div className="text-2xl text-red-500">♞</div>
+              <h3 className="text-xl font-bold text-white">Receba novidades do Xeque-Mate</h3>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="nome" className="block text-sm mb-2 text-[#00d9ff]" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                  &#123; nome &#125;
+                <label htmlFor="nome" className="mb-2 block text-sm font-medium text-stone-200">
+                  Nome
                 </label>
                 <input
                   type="text"
@@ -398,15 +375,14 @@ export function HeroSection() {
                   value={formData.nome}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-[#0f0f16] border border-[#00d9ff]/20 text-white focus:border-[#00d9ff] focus:outline-none transition-colors placeholder:text-gray-600"
+                  className="w-full rounded-xl border border-stone-700 bg-stone-900/80 px-4 py-3 text-white transition-colors placeholder:text-stone-500 focus:border-red-500 focus:outline-none"
                   placeholder="Seu nome completo"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm mb-2 text-[#00d9ff]" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                  &#123; email &#125;
+                <label htmlFor="email" className="mb-2 block text-sm font-medium text-stone-200">
+                  E-mail
                 </label>
                 <input
                   type="email"
@@ -415,15 +391,14 @@ export function HeroSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-[#0f0f16] border border-[#00d9ff]/20 text-white focus:border-[#00d9ff] focus:outline-none transition-colors placeholder:text-gray-600"
+                  className="w-full rounded-xl border border-stone-700 bg-stone-900/80 px-4 py-3 text-white transition-colors placeholder:text-stone-500 focus:border-red-500 focus:outline-none"
                   placeholder="seu@email.com"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
                 />
               </div>
 
               <div>
-                <label htmlFor="telefone" className="block text-sm mb-2 text-[#00d9ff]" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                  &#123; telefone &#125;
+                <label htmlFor="telefone" className="mb-2 block text-sm font-medium text-stone-200">
+                  Telefone
                 </label>
                 <input
                   type="tel"
@@ -432,16 +407,15 @@ export function HeroSection() {
                   value={formData.telefone}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-[#0f0f16] border border-[#00d9ff]/20 text-white focus:border-[#00d9ff] focus:outline-none transition-colors placeholder:text-gray-600"
+                  className="w-full rounded-xl border border-stone-700 bg-stone-900/80 px-4 py-3 text-white transition-colors placeholder:text-stone-500 focus:border-red-500 focus:outline-none"
                   placeholder="(00) 00000-0000"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="estado" className="block text-sm mb-2 text-[#00d9ff]" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                    &#123; estado &#125;
+                  <label htmlFor="estado" className="mb-2 block text-sm font-medium text-stone-200">
+                    Estado
                   </label>
                   <input
                     type="text"
@@ -450,15 +424,14 @@ export function HeroSection() {
                     value={formData.estado}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-[#0f0f16] border border-[#00d9ff]/20 text-white focus:border-[#00d9ff] focus:outline-none transition-colors placeholder:text-gray-600"
+                    className="w-full rounded-xl border border-stone-700 bg-stone-900/80 px-4 py-3 text-white uppercase transition-colors placeholder:text-stone-500 focus:border-red-500 focus:outline-none"
                     placeholder="UF"
                     maxLength={2}
-                    style={{ fontFamily: 'Inter, sans-serif' }}
                   />
                 </div>
                 <div>
-                  <label htmlFor="cidade" className="block text-sm mb-2 text-[#00d9ff]" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                    &#123; cidade &#125;
+                  <label htmlFor="cidade" className="mb-2 block text-sm font-medium text-stone-200">
+                    Cidade
                   </label>
                   <input
                     type="text"
@@ -467,9 +440,8 @@ export function HeroSection() {
                     value={formData.cidade}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-[#0f0f16] border border-[#00d9ff]/20 text-white focus:border-[#00d9ff] focus:outline-none transition-colors placeholder:text-gray-600"
+                    className="w-full rounded-xl border border-stone-700 bg-stone-900/80 px-4 py-3 text-white transition-colors placeholder:text-stone-500 focus:border-red-500 focus:outline-none"
                     placeholder="Sua cidade"
-                    style={{ fontFamily: 'Inter, sans-serif' }}
                   />
                 </div>
               </div>
@@ -479,21 +451,20 @@ export function HeroSection() {
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#00d9ff] text-black py-3.5 rounded-lg hover:bg-[#00c4ea] transition-colors flex items-center justify-center gap-2 mt-6 disabled:opacity-70 disabled:cursor-not-allowed"
-                style={{ fontFamily: 'Space Grotesk, monospace' }}
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-red-600 py-3.5 text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                <span>{isSubmitting ? 'sending()' : 'subscribe()'}</span>
+                <span>{isSubmitting ? 'Enviando...' : 'Quero receber novidades'}</span>
                 <Send className="w-4 h-4" />
               </motion.button>
 
               {submitError && (
-                <p className="text-xs text-red-400 text-center mt-2" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <p className="mt-2 text-center text-xs text-red-400">
                   {submitError}
                 </p>
               )}
 
-              <p className="text-xs text-gray-600 text-center mt-4" style={{ fontFamily: 'Space Grotesk, monospace' }}>
-                // Voce pode cancelar a qualquer momento
+              <p className="mt-4 text-center text-xs text-stone-500">
+                Seus dados serão usados apenas para contato sobre conteúdos e novidades.
               </p>
             </form>
           </div>

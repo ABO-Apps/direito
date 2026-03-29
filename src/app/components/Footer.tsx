@@ -80,12 +80,12 @@ export function Footer() {
             <div className="flex items-center gap-2">
               <span className="text-2xl">♔</span>
               <h3 className="text-2xl font-bold font-display">
-                <span className="text-white">AMF</span>
+                <span className="text-white">Xeque-Mate</span>
                 <span className="text-red-600"> Direito</span>
               </h3>
             </div>
             <p className="text-neutral-400 text-sm leading-relaxed max-w-xs font-body">
-              Formando estrategistas jurídicos que pensam além do convencional.
+              Onde o Direito sai da teoria e entra no jogo.
             </p>
           </motion.div>
 
@@ -102,28 +102,28 @@ export function Footer() {
             </h4>
             <div className="flex flex-col space-y-3">
               <a
-                href="#"
+                href="#inicio"
                 className="text-neutral-400 hover:text-red-600 transition-colors text-sm"
               >
                 Sobre o curso
               </a>
               <a
-                href="#"
+                href="#areas"
                 className="text-neutral-400 hover:text-red-600 transition-colors text-sm"
               >
                 Áreas jurídicas
               </a>
               <a
-                href="#"
+                href="#numeros"
                 className="text-neutral-400 hover:text-red-600 transition-colors text-sm"
               >
-                Processo seletivo
+                Números
               </a>
               <a
-                href="#"
+                href="#comunidade"
                 className="text-neutral-400 hover:text-red-600 transition-colors text-sm"
               >
-                Eventos
+                Comunidade
               </a>
             </div>
           </motion.div>
@@ -137,20 +137,27 @@ export function Footer() {
             className="space-y-4"
           >
             <h4 className="text-sm font-semibold text-white uppercase tracking-wider">
-              Contato
+              Coordenação
             </h4>
             <div className="space-y-3 text-neutral-400 text-sm">
               <div className="flex items-start gap-2">
                 <MapPin className="size-4 mt-0.5 flex-shrink-0 text-red-600" />
-                <p>Recanto Maestro<br />Restinga Sêca - RS</p>
+                <p>
+                  Campus: Estrada Recanto Maestro, nº 338, Distrito Recanto Maestro,
+                  Restinga Sêca-RS, CEP: 97200-000, Brasil
+                </p>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="size-4 flex-shrink-0 text-red-600" />
-                <p>contato@amf.edu.br</p>
+                <p>Coordenador: Prof. Ms. Lúcio André Müller Lorenzon</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="size-4 flex-shrink-0 text-red-600" />
+                <p>coord.direito@amf.edu.br</p>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="size-4 flex-shrink-0 text-red-600" />
-                <p>(55) 3289-1100</p>
+                <p>(55) 32891-7141</p>
               </div>
             </div>
           </motion.div>
@@ -168,19 +175,25 @@ export function Footer() {
             </h4>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.instagram.com/direito.amf/"
+                target="_blank"
+                rel="noreferrer"
                 className="p-2.5 bg-white/5 border border-white/10 rounded-lg hover:border-red-600 hover:bg-red-600/10 transition-all group"
               >
                 <Instagram className="size-5 text-neutral-400 group-hover:text-red-600 transition-colors" />
               </a>
               <a
-                href="#"
+                href="https://www2.faculdadeam.edu.br/bacharelado-em-direito/"
+                target="_blank"
+                rel="noreferrer"
                 className="p-2.5 bg-white/5 border border-white/10 rounded-lg hover:border-red-600 hover:bg-red-600/10 transition-all group"
               >
                 <Globe className="size-5 text-neutral-400 group-hover:text-red-600 transition-colors" />
               </a>
               <a
-                href="#"
+                href="https://especializacaodireitoamf.com.br/"
+                target="_blank"
+                rel="noreferrer"
                 className="p-2.5 bg-white/5 border border-white/10 rounded-lg hover:border-red-600 hover:bg-red-600/10 transition-all group"
               >
                 <Calendar className="size-5 text-neutral-400 group-hover:text-red-600 transition-colors" />
@@ -209,11 +222,21 @@ export function Footer() {
             </p>
 
             <div className="flex gap-6 text-sm text-neutral-500">
-              <a href="#" className="hover:text-red-600 transition-colors">
-                Privacidade
+              <a
+                href="https://www2.faculdadeam.edu.br/bacharelado-em-direito/"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-red-600 transition-colors"
+              >
+                Site Oficial
               </a>
-              <a href="#" className="hover:text-red-600 transition-colors">
-                Termos de uso
+              <a
+                href="https://especializacaodireitoamf.com.br/"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-red-600 transition-colors"
+              >
+                Especialização
               </a>
             </div>
           </div>

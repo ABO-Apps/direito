@@ -4,6 +4,7 @@ import { StatsSection } from './components/StatsSection';
 import { Footer } from './components/Footer';
 import { ChessboardTransition } from './components/ChessboardTransition';
 import { CursorSpotlight } from './components/CursorSpotlight';
+import { RightSocialSection } from './components/RightSocialSection';
 import { motion, useScroll, useTransform } from 'motion/react';
 
 export default function App() {
@@ -72,6 +73,9 @@ export default function App() {
 
         {/* Stats Section */}
         <StatsSection />
+
+        {/* Right Social Section */}
+        <RightSocialSection />
 
         {/* Footer */}
         <Footer />

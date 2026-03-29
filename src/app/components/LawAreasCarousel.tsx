@@ -1,10 +1,9 @@
 import { motion } from 'motion/react';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface LawArea {
   title: string;
@@ -15,39 +14,39 @@ interface LawArea {
 
 const lawAreas: LawArea[] = [
   {
-    title: 'Direito Empresarial',
-    description: 'Estratégias corporativas e governança jurídica para negócios',
-    image: 'https://images.unsplash.com/photo-1758518727343-e578b7795ad5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBidXNpbmVzcyUyMHN0cmF0ZWd5fGVufDF8fHx8MTc3MjY0NjA0Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    title: 'Temas atuais do Direito',
+    description: 'Discussões que conectam teoria, atualidade e decisões reais.',
+    image: 'https://images.unsplash.com/photo-1769029265788-d7921a103403?auto=format&fit=crop&w=1200&q=80',
     icon: '♔',
   },
   {
-    title: 'Direito Penal',
-    description: 'Defesa estratégica e acusação no sistema criminal',
-    image: 'https://images.unsplash.com/photo-1769029265788-d7921a103403?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmltaW5hbCUyMGp1c3RpY2UlMjBjb3VydHJvb218ZW58MXx8fHwxNzcyNjQ2MDQ3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    title: 'Cases e prática',
+    description: 'Situações concretas para mostrar como o Direito entra em cena.',
+    image: 'https://images.unsplash.com/photo-1666018215790-867b14fe4822?auto=format&fit=crop&w=1200&q=80',
     icon: '♜',
   },
   {
-    title: 'Direito Constitucional',
-    description: 'Fundamentos do poder e garantias fundamentais',
-    image: 'https://images.unsplash.com/photo-1760829130145-2ea0ac80f8b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25zdGl0dXRpb24lMjBnb3Zlcm5tZW50JTIwYnVpbGRpbmd8ZW58MXx8fHwxNzcyNjQ2MDQ3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    title: 'Carreira jurídica',
+    description: 'Possibilidades, caminhos e estratégias para construir trajetória.',
+    image: 'https://images.unsplash.com/photo-1758518727343-e578b7795ad5?auto=format&fit=crop&w=1200&q=80',
     icon: '♛',
   },
   {
-    title: 'Direito Civil',
-    description: 'Relações privadas, contratos e patrimônio',
-    image: 'https://images.unsplash.com/photo-1666018215790-867b14fe4822?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaXZpbCUyMGxhdyUyMGNvbnRyYWN0JTIwc2lnbmluZ3xlbnwxfHx8fDE3NzI1Mzk4ODF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    title: 'Direito no dia a dia',
+    description: 'Aplicações reais que tornam a área próxima, viva e relevante.',
+    image: 'https://images.unsplash.com/photo-1764931806432-a85ecbbece40?auto=format&fit=crop&w=1200&q=80',
     icon: '♞',
   },
   {
-    title: 'Direito Internacional',
-    description: 'Estratégias globais e diplomacia jurídica',
-    image: 'https://images.unsplash.com/photo-1664785658580-07f819ce49cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxpbnRlcm5hdGlvbmFsJTIwZGlwbG9tYWN5JTIwZmxhZ3N8ZW58MXx8fHwxNzcyNjQ2MDQ4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    title: 'Leitura de cenário',
+    description: 'Análises que ajudam a entender contexto, impacto e estratégia.',
+    image: 'https://images.unsplash.com/photo-1664785658580-07f819ce49cd?auto=format&fit=crop&w=1200&q=80',
     icon: '♝',
   },
   {
-    title: 'Direito Público',
-    description: 'Administração, controle e poder estatal',
-    image: 'https://images.unsplash.com/photo-1764931806432-a85ecbbece40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdWJsaWMlMjBhZG1pbmlzdHJhdGlvbiUyMG1vZGVybiUyMGJ1aWxkaW5nfGVufDF8fHx8MTc3MjY0NjA0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    title: 'Quem vive o jogo',
+    description: 'Insights, vivências e repertório de quem atua na prática.',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80',
     icon: '♖',
   },
 ];
@@ -73,6 +72,8 @@ export function LawAreasCarousel() {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: '40px',
         },
       },
       {
@@ -80,15 +81,16 @@ export function LawAreasCarousel() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerMode: true,
-          centerPadding: '40px',
+          centerMode: false,
+          centerPadding: '0px',
+          adaptiveHeight: true,
         },
       },
     ],
   };
 
   return (
-    <section className="relative py-20 md:py-32 px-4 overflow-hidden bg-neutral-900">
+    <section id="areas" className="relative overflow-hidden bg-neutral-900 px-4 py-16 md:py-32">
       {/* Diagonal mesh gradient background */}
       <div className="absolute inset-0">
         <motion.div
@@ -224,20 +226,20 @@ export function LawAreasCarousel() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12 md:mb-16 space-y-5 px-4"
+          className="mb-10 space-y-4 px-2 text-center md:mb-16 md:space-y-5 md:px-4"
         >
           <div className="flex items-center justify-center gap-3 mb-2">
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-red-600"></div>
-            <span className="text-sm uppercase tracking-wider text-red-600 font-semibold">Tabuleiro Jurídico</span>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-red-600"></div>
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-red-600 md:w-12"></div>
+            <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-red-600 md:text-sm md:tracking-wider">Tabuleiro Jurídico</span>
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-red-600 md:w-12"></div>
           </div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-display">
-            Áreas de <span className="text-red-600">domínio</span>
+          <h2 className="text-3xl font-bold text-white font-display sm:text-4xl md:text-5xl lg:text-6xl">
+            O Direito em <span className="text-red-600">movimento</span>
           </h2>
           
-          <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed font-body">
-            Cada área é uma peça estratégica no jogo jurídico
+          <p className="mx-auto max-w-xl text-sm leading-relaxed text-neutral-400 font-body sm:text-base md:max-w-2xl md:text-xl">
+            Conteúdos pensados para mostrar que aprender Direito também é saber ler o jogo.
           </p>
         </motion.div>
 
@@ -249,38 +251,18 @@ export function LawAreasCarousel() {
           transition={{ duration: 1, delay: 0.2 }}
           className="carousel-container relative"
         >
-          {/* Navigation Arrows */}
-          <div className="hidden md:block">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => sliderRef.current?.slickPrev()}
-              className="absolute -left-4 lg:-left-12 top-1/2 -translate-y-1/2 z-20 p-3 bg-neutral-900/80 backdrop-blur-sm border border-white/10 rounded-full hover:bg-red-600/20 hover:border-red-600/50 transition-all group"
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="size-6 text-white group-hover:text-red-400 transition-colors" />
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => sliderRef.current?.slickNext()}
-              className="absolute -right-4 lg:-right-12 top-1/2 -translate-y-1/2 z-20 p-3 bg-neutral-900/80 backdrop-blur-sm border border-white/10 rounded-full hover:bg-red-600/20 hover:border-red-600/50 transition-all group"
-              aria-label="Next slide"
-            >
-              <ChevronRight className="size-6 text-white group-hover:text-red-400 transition-colors" />
-            </motion.button>
-          </div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-12 bg-gradient-to-r from-neutral-900 to-transparent md:block" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-12 bg-gradient-to-l from-neutral-900 to-transparent md:block" />
 
           <Slider ref={sliderRef} {...settings} afterChange={(index) => setCurrentSlide(index)}>
             {lawAreas.map((area, index) => (
-              <div key={area.title} className="px-2 md:px-3">
+              <div key={area.title} className="px-0 md:px-3">
                 <motion.div
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="relative group cursor-pointer h-80 md:h-96 rounded-xl overflow-hidden"
+                  className="relative group cursor-pointer h-[22rem] overflow-hidden rounded-xl md:h-[27rem]"
                 >
                   {/* Image */}
                   <ImageWithFallback
@@ -319,8 +301,8 @@ export function LawAreasCarousel() {
                   </motion.div>
 
                   {/* Title and Description */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 space-y-2">
-                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white group-hover:text-red-400 transition-colors duration-300 font-heading">
+                  <div className="absolute bottom-0 left-0 right-0 space-y-2 p-5 md:p-6">
+                    <h3 className="font-heading text-xl font-bold text-white transition-colors duration-300 group-hover:text-red-400 md:text-2xl lg:text-3xl">
                       {area.title}
                     </h3>
                     
@@ -328,7 +310,7 @@ export function LawAreasCarousel() {
                     <motion.p
                       initial={{ opacity: 0, y: 10 }}
                       whileHover={{ opacity: 1, y: 0 }}
-                      className="text-sm md:text-base text-neutral-300 font-body opacity-0 group-hover:opacity-100 transition-all duration-300"
+                      className="font-body text-sm text-neutral-300 opacity-100 transition-all duration-300 md:text-base md:opacity-0 md:group-hover:opacity-100"
                     >
                       {area.description}
                     </motion.p>
@@ -346,46 +328,27 @@ export function LawAreasCarousel() {
           </Slider>
         </motion.div>
 
-        {/* Custom Progress Indicators */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex justify-center items-center gap-3 mt-8 md:mt-12"
+          transition={{ duration: 0.8, delay: 0.35 }}
+          className="mt-6 flex items-center justify-center gap-2 md:mt-8 md:gap-3"
         >
           {lawAreas.map((area, index) => (
-            <motion.button
-              key={index}
+            <button
+              key={area.title}
+              type="button"
               onClick={() => sliderRef.current?.slickGoTo(index)}
-              className="group relative"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label={`Go to ${area.title}`}
+              aria-label={`Ir para ${area.title}`}
+              className="group flex items-center"
             >
-              {/* Dot */}
-              <div
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === index
-                    ? 'bg-red-600 scale-125'
-                    : 'bg-white/30 hover:bg-white/50'
+              <span
+                className={`block h-2.5 rounded-full transition-all duration-300 ${
+                  currentSlide === index ? 'w-8 bg-red-600' : 'w-2.5 bg-white/25 group-hover:bg-white/45'
                 }`}
               />
-              
-              {/* Active indicator line */}
-              {currentSlide === index && (
-                <motion.div
-                  layoutId="activeSlide"
-                  className="absolute -bottom-2 left-1/2 -translate-x-1/2 h-px w-8 bg-red-600"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-              
-              {/* Tooltip on hover */}
-              <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-neutral-900 border border-white/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap text-xs text-white pointer-events-none">
-                {area.icon} {area.title}
-              </div>
-            </motion.button>
+            </button>
           ))}
         </motion.div>
 
@@ -397,6 +360,14 @@ export function LawAreasCarousel() {
           
           .carousel-container .slick-list {
             margin: 0 -8px;
+          }
+
+          .carousel-container .slick-track {
+            display: flex;
+          }
+
+          .carousel-container .slick-slide > div {
+            height: 100%;
           }
 
           @media (max-width: 640px) {
